@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '6.5.1'
+}
+
+group 'org.example'
+version '1.0'
+
+java {
+    sourceCompatibility = JavaLanguageVersion.of(17)
+    targetCompatibility = JavaLanguageVersion.of(17)
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    apacheHttpClientVersion = '5.3.1'
+    fasterXmlJacksonVersion = '2.17.1'
+    jUnitJupiterVersion = '5.7.0'
+}
+
+dependencies {
+    implementation "org.apache.httpcomponents.client5:httpclient5:${apacheHttpClientVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${fasterXmlJacksonVersion}"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${fasterXmlJacksonVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitJupiterVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jUnitJupiterVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+wrapper {
+    gradleVersion '8.8'
+}
